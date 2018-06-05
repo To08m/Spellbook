@@ -6,6 +6,7 @@ const changeText = function(){
     const heading = document.querySelector('h2')
     const form = document.querySelector('input');//proper selector?
     heading.textContent = form.value;
+    return false
 }
 
 document.querySelector('input').onkeypress = function(event){
