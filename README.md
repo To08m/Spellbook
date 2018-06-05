@@ -3,7 +3,7 @@
 ##Day 1 HW 
 
 
-*Make the button change the text of the heading ('<h1>').
+*Make the button change the text of the heading ('h1').
 
 ##Bonus Cred 
 
