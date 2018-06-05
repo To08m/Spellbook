@@ -5,7 +5,7 @@ const button = document.querySelector('button')
 const changeText = function(){
     const heading = document.querySelector('#spells')
     const form = document.querySelector('form')//proper selector?
-    heading.textContent += ' '+ form.spellName.value
+    heading.innerHTML += '<p>'+ form.spellName.value +'</p>'
     form.spellName.value = ''
 }
 
@@ -14,7 +14,7 @@ document.querySelector('input').onkeypress = function(event){
     if (keyCode === 13){
         const heading = document.querySelector('#spells')
         const form = document.querySelector('form')
-        heading.textContent += ' ' + form.spellName.value
+        heading.innerHTML += '<p>'+ form.spellName.value +'</p>'
         form.spellName.value = ''
         return false
     }
