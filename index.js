@@ -3,9 +3,10 @@ console.log('testing')
 const button = document.querySelector('button')
 
 const changeText = function(){
-    const heading = document.querySelector('#spells')
+    const heading = document.querySelector('h2')
     const form = document.querySelector('form')//proper selector?
-    heading.textContent = ' ' + form.spellName.value
+    heading.textContent += ' '+ form.spellName.value
+    form.spellName.value = ''
 }
 
 document.querySelector('input').onkeypress = function(event){
