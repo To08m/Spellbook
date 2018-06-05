@@ -2,7 +2,6 @@ console.log('testing')
 
 const button = document.querySelector('button')
 
-
 const changeText = function(){
     const heading = document.querySelector('h2')
     const form = document.querySelector('input');//proper selector?
