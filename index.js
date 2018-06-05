@@ -1,26 +1,41 @@
 const form = document.querySelector('form')
 
 
-const changeHeading = function(ev) {
+const addSpell = function(ev) {
   ev.preventDefault()
   const f = ev.target
 
   const li1 = document.createElement("LI")
-  const li2 = document.createElement("LI")
   
   const spellName = document.createTextNode(f.spellName.value)
-  const manaCost = document.createTextNode(f.manaCost.value)
 
   li1.appendChild(spellName)
-  li2.appendChild(manaCost)
 
   const spellsDiv = document.querySelector('#spells')
-  const manaDiv = document.querySelector('#cost')
 
   spellsDiv.appendChild(li1)
-  manaDiv.appendChild(li2)
-  
-  f.reset()
 }
 
-form.addEventListener('submit', changeHeading)
+const addMana = function(ev){
+    ev.preventDefault()
+    const f = ev.target
+
+    const li2 = document.createElement("LI")
+
+    const manaCost = document.createTextNode(f.manaCost.value)
+
+    li2.appendChild(manaCost)
+
+    const manaDiv = document.querySelector('#cost')
+
+    manaDiv.appendChild(li2)
+
+    f.reset()
+}
+
+function runAll(ev){
+    
+}
+
+form.addEventListener("submit",addSpell)
+form.addEventListener("submit",addMana)

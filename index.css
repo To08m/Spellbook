@@ -126,6 +126,7 @@ main {
 ul#spells {
  list-style: none;
  padding: 0;
+ color: blue;
 }
 
 ul {
@@ -137,4 +138,9 @@ ul {
 .details {
   font-size: 0.7em;
   margin-top: -1rem;
+}
+
+ul#cost{
+  color: red;
+  list-style: none; 
 }
