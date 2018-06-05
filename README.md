@@ -1,10 +1,10 @@
-#Spellbook
+# Spellbook
 
-##Day 2 HW 
+## Day 2 HW 
 
 * Add a second field of your choice to the form.
 
-##Bonus Cred
+## Bonus Cred
 
 * Lookup document.createElement and appendChild, and try adding the list items that way instead of with innerHTML
 
