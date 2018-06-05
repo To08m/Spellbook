@@ -4,9 +4,10 @@ const button = document.querySelector('button')
 
 const changeText = function(){
     const heading = document.querySelector('#spells')
-    const form = document.querySelector('form')//proper selector?
-    heading.innerHTML += '<p>'+ form.spellName.value +'</p>'
-    form.spellName.value = ''
+    const form = document.querySelector('form')
+    heading.innerHTML += `<p>${form.spellName.value}</p>` //'<p>'+ form.spellName.value +'</p>'
+    //form.spellName.value = ''
+    form.reset()
 }
 
 document.querySelector('input').onkeypress = function(event){
@@ -15,7 +16,7 @@ document.querySelector('input').onkeypress = function(event){
         const heading = document.querySelector('#spells')
         const form = document.querySelector('form')
         heading.innerHTML += '<p>'+ form.spellName.value +'</p>'
-        form.spellName.value = ''
+        form.reset()
         return false
     }
   }
