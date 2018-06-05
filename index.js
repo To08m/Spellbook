@@ -3,7 +3,7 @@ console.log('testing')
 const button = document.querySelector('button')
 
 const changeText = function(){
-    const heading = document.querySelector('h2')
+    const heading = document.querySelector('#spells')
     const form = document.querySelector('form')//proper selector?
     heading.textContent += ' '+ form.spellName.value
     form.spellName.value = ''
