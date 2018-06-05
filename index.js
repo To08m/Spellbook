@@ -1,24 +1,15 @@
-console.log('testing')
+const form = document.querySelector('form')
 
-const button = document.querySelector('button')
+const changeHeading = function(ev) {
+  ev.preventDefault()
 
-const changeText = function(){
-    const heading = document.querySelector('#list')
-    const form = document.querySelector('form')
-    heading.innerHTML += `<p>${form.spellName.value}</p>` //'<p>'+ form.spellName.value +'</p>'
-    //form.spellName.value = ''
-    form.reset()
+  const f = ev.target
+  const spellName = f.spellName.value
+
+  const spellsDiv = document.querySelector('#spells')
+  spellsDiv.innerHTML += `<li>${spellName}</li>`
+
+  f.reset()
 }
 
-document.querySelector('input').onkeypress = function(event){
-    const keyCode = event.keyCode
-    if (keyCode === 13){
-        const heading = document.querySelector('#list')
-        const form = document.querySelector('form')
-        heading.innerHTML += '<li>'+ form.spellName.value +'</li>'
-        form.reset()
-        return false
-    }
-  }
-
-button.addEventListener('click', changeText)
+form.addEventListener('submit', changeHeading)
