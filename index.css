@@ -46,8 +46,9 @@ form > div {
   align-items: stretch;
 }
 
-input[type="text"] {
-  flex: 1 1 0px;
+input[type="text"],
+input[type="number"] {
+  flex: 2 1 0;
   height: auto;
   min-width: 0;
   display: block;

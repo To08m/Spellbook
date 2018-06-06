@@ -25,7 +25,7 @@ const addSpell = function(ev) {
   */
 
   /*spans with createElement and appendChild
-    const nameSpan = document.createElement('span')
+     const nameSpan = document.createElement('span')
      nameSpan.textContent = spellName
 
      const levelSpan = document.createElement('span')
