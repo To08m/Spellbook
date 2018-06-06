@@ -126,7 +126,7 @@ main {
 ul#spells {
  list-style: none;
  padding: 0;
- color: blue;
+ color: red;
 }
 
 ul {
@@ -141,6 +141,6 @@ ul {
 }
 
 ul#cost{
-  color: red;
+  color: blue;
   list-style: none; 
 }
