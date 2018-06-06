@@ -144,3 +144,8 @@ ul#cost{
   color: blue;
   list-style: none; 
 }
+
+ul#str{
+  color: green;
+  list-style: none; 
+}

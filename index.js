@@ -29,13 +29,25 @@ const addMana = function(ev){
     const manaDiv = document.querySelector('#cost')
 
     manaDiv.appendChild(li2)
+}
+
+const addPow = function(ev){
+    ev.preventDefault()
+    const f = ev.target
+
+    const li3 = document.createElement("LI")
+
+    const powVal = document.createTextNode(f.power.value)
+
+    li3.appendChild(powVal)
+
+    const powDiv = document.querySelector('#str')
+
+    powDiv.appendChild(li3)
 
     f.reset()
 }
 
-function runAll(ev){
-    
-}
-
 form.addEventListener("submit",addSpell)
 form.addEventListener("submit",addMana)
+form.addEventListener("submit",addPow)
