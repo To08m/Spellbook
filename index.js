@@ -14,6 +14,13 @@ const addSpell = function(ev) {
   const spellsDiv = document.querySelector('#spells')
 
   spellsDiv.appendChild(li1)
+
+  /*spellsDiv.innerHTML += `
+    <li>
+      <span class="spellName">${spellName}</span>,
+      <span class="level">lvl ${level}</span>
+    </li>
+  `*/
 }
 
 const addMana = function(ev){
