@@ -62,6 +62,10 @@ const handleSubmit = function(ev) {
 
 const delItem = function(){
     this.parentNode.parentNode.removeChild(this.parentNode)
-}
+    console.log(butt.indexOf(this))
+
+    tot.splice(butt.indexOf(this),1)
+    butt.splice(butt.indexOf(this),1)
+}   
 
 form.addEventListener('submit', handleSubmit)
