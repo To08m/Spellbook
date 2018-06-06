@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans%7CHomemade+Apple%7CUnifrakturCook:700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Homemade+Apple|UnifrakturCook:700');
 
 body {
   background: url(wood.jpg);
@@ -30,7 +30,7 @@ h1 {
   margin-left: 10vw;
   margin-top: 5vw;
   margin-bottom: 3vw;
-  color: rgba(0, 0, 0,0.7);
+  color: rgba(0, 0, 0, 0.4);
   font-size: 8vw;
 }
 
@@ -48,7 +48,7 @@ form > div {
 
 input[type="text"],
 input[type="number"] {
-  flex: 2 1 0;
+  flex: 4 1 0;
   height: auto;
   min-width: 0;
   display: block;
@@ -67,7 +67,8 @@ input[type="number"] {
   appearance: none;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="number"]:focus {
   outline: 0;
   border: 1px solid #8a8a8a;
   background-color: #fefefe;
@@ -127,13 +128,6 @@ main {
 ul#spells {
  list-style: none;
  padding: 0;
- color: red;
-}
-
-ul {
-  display: inline-block;
-  *display: inline;
-  zoom: 1
 }
 
 .details {
@@ -141,12 +135,22 @@ ul {
   margin-top: -1rem;
 }
 
-ul#cost{
-  color: blue;
-  list-style: none; 
+input.small {
+  flex-grow: 1;
 }
 
-ul#str{
-  color: green;
-  list-style: none; 
+.spell {
+  display: flex;
+  justify-content: space-between;
+}
+
+.spell .name {
+  text-decoration: underline;
+  max-width: 80%;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  padding-left: 0.1em;
+}
+.level {
+  color: cornflowerblue;
 }

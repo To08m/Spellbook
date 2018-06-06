@@ -21,21 +21,14 @@
         name="spellName"
         placeholder="Enter a spell name"
         autofocus
-        maxlength="17"
       >
       <input
         type="number"
-        name="manaCost"
-        placeholder="Enter mana cost"
-        max="9999"
-        min="0"
-      >
-      <input
-        type="number"
-        name="power"
-        placeholder="Enter spell's power"
-        max="9999"
-        min="0"
+        name="level"
+        placeholder="Level"
+        class="small"
+        min="1"
+        max="20"
       >
       <button type="submit">Add</button>
     </div>
@@ -43,8 +36,6 @@
 
   <main>
     <ul id="spells"></ul>
-    <ul id="cost"></ul>
-    <ul id="str"></ul>
   </main>
 
   <script src="index.js"></script>
