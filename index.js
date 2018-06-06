@@ -1,4 +1,6 @@
 const form = document.querySelector('form')
+const tot = []
+const butt = []
 
 const renderProperty = function(name, value) {
   const el = document.createElement('span')
@@ -25,7 +27,19 @@ const renderItem = function(spell) {
     item.appendChild(el)
   })
 
+  const button = document.createElement("button")
+  button.innerText = "delete"
+  button.addEventListener("click",delItem)
+  item.appendChild(button)
+
+  addItem(butt, button)
+  addItem(tot,spell)
+
   return item
+}
+
+const addItem = function(arr, inp){
+    arr.push(inp)
 }
 
 const handleSubmit = function(ev) {
@@ -44,6 +58,10 @@ const handleSubmit = function(ev) {
   list.appendChild(item)
 
   f.reset()
+}
+
+const delItem = function(){
+    this.parentNode.parentNode.removeChild(this.parentNode)
 }
 
 form.addEventListener('submit', handleSubmit)

@@ -8,9 +8,9 @@
 
 * Add a delete button to each list item that removes it from the list.
 
-##$ Super Mega Bonus Credit
+### Super Mega Bonus Credit
 
-*Remove the item from the array as well.
+* Remove the item from the array as well.
 
 
 ## Day 2 HW 
