@@ -11,16 +11,32 @@ const addSpell = function(ev) {
 
   li1.appendChild(spellName)
 
-  const spellsDiv = document.querySelector('#spells')
+  const spellsList = document.querySelector('#spells')
 
-  spellsDiv.appendChild(li1)
+  spellsList.appendChild(li1)
 
-  /*spellsDiv.innerHTML += `
+  /*spans with innerHTML
+  spellsDiv.innerHTML += `
     <li>
       <span class="spellName">${spellName}</span>,
       <span class="level">lvl ${level}</span>
     </li>
-  `*/
+  `
+  */
+
+  /*spans with createElement and appendChild
+    const nameSpan = document.createElement('span')
+     nameSpan.textContent = spellName
+
+     const levelSpan = document.createElement('span')
+     levelSpan.textContent = level
+
+     const item = document.createElement('li')
+     item.appendChild(nameSpan)
+     item.appendChild(levelSpan)
+
+     list.appendChild(item)
+  */
 }
 
 const addMana = function(ev){
@@ -33,9 +49,9 @@ const addMana = function(ev){
 
     li2.appendChild(manaCost)
 
-    const manaDiv = document.querySelector('#cost')
+    const manaList = document.querySelector('#cost')
 
-    manaDiv.appendChild(li2)
+    manaList.appendChild(li2)
 }
 
 const addPow = function(ev){
@@ -48,9 +64,9 @@ const addPow = function(ev){
 
     li3.appendChild(powVal)
 
-    const powDiv = document.querySelector('#str')
+    const powList = document.querySelector('#str')
 
-    powDiv.appendChild(li3)
+    powList.appendChild(li3)
 
     f.reset()
 }
