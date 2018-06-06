@@ -35,6 +35,11 @@ const renderItem = function(spell) {
   addItem(butt, button)
   addItem(tot,spell)
 
+  t.textContent = ""
+  tot.forEach(function(te){
+    t.textContent += te.name + " "
+    })
+
   return item
 }
 
@@ -62,9 +67,15 @@ const handleSubmit = function(ev) {
 
 const delItem = function(){
     this.parentNode.parentNode.removeChild(this.parentNode)
-    console.log(butt.indexOf(this))
+    const t = document.querySelector("#t")
+    t.textContent = ""
 
     tot.splice(butt.indexOf(this),1)
+
+    tot.forEach(function(te){
+        t.textContent += te.name + " "
+    })
+
     butt.splice(butt.indexOf(this),1)
 }   
 

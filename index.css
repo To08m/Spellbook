@@ -154,3 +154,10 @@ input.small {
 .level {
   color: cornflowerblue;
 }
+
+h2{
+  margin-left: 6vw;
+  margin-top: 5vw;
+  margin-bottom: 3vw;
+  font-size: 4vw;
+}
