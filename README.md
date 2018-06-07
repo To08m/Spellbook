@@ -1,5 +1,9 @@
 # Spellbook
 
+## Weekend 
+
+* content editable
+
 ## Day 3 Homework
 
 * In addition to building a list item and adding it to the DOM (as we are now), also store each spell in an array.
