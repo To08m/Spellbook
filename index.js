@@ -28,6 +28,7 @@ const renderItem = function(spell) {
   })
 
   const button = document.createElement("button")
+  button.classList.add('delete')
   button.innerText = "delete"
   button.addEventListener("click",delItem)
   item.appendChild(button)
