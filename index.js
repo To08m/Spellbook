@@ -1,83 +1,77 @@
-const form = document.querySelector('form')
-const tot = []
-const butt = []
+const app = {
+  init: function() {
+    this.spells = []
+    this.template = document.querySelector('.spell.template')
 
-const renderProperty = function(name, value) {
-  const el = document.createElement('span')
-  el.textContent = value
-  el.classList.add(name)
-  return el
-}
+    const form = document.querySelector('form')
+    form.addEventListener('submit', ev => {
+      this.handleSubmit(ev)
+    })
+  },
 
-const renderItem = function(spell) {
-  // ['name', 'level']
-  properties = Object.keys(spell)
+  renderProperty: function(name, value) {
+    const el = document.createElement('span')
+    el.textContent = value
+    el.classList.add(name)
+    el.setAttribute('title', value)
+    return el
+  },
 
-  // collect an array of renderProperty's return values
-  // (an array of <span> elements)
-  const childElements = properties.map(function(property) {
-    return renderProperty(property, spell[property])
-  })
+  renderItem: function(spell) {
+    const item = this.template.cloneNode(true)
+    item.classList.remove('template')
 
-  const item = document.createElement('li')
-  item.classList.add('spell')
+    // ['name', 'level', etc.]
+    properties = Object.keys(spell)
 
-  // append each <span> to the <li>
-  childElements.forEach(function(el) {
-    item.appendChild(el)
-  })
-
-  const button = document.createElement("button")
-  button.classList.add('delete')
-  button.innerText = "delete"
-  button.addEventListener("click",delItem)
-  item.appendChild(button)
-
-  addItem(butt, button)
-  addItem(tot,spell)
-
-  t.textContent = ""
-  tot.forEach(function(te){
-    t.textContent += te.name + " "
+    // Replace the appropriate values in each <span>
+    properties.forEach(property => {
+      const el = item.querySelector(`.${property}`)
+      el.textContent = spell[property]
+      el.setAttribute('title', spell[property])
     })
 
-  return item
+    // delete button
+    item
+      .querySelector('button.delete')
+      .addEventListener(
+        'click',
+        this.removeSpell.bind(this, spell)
+      )
+
+    return item
+  },
+
+  removeSpell: function(spell, ev) {
+    // Remove from the DOM
+    const button = ev.target
+    const item = button.closest('.spell')
+    item.parentNode.removeChild(item)
+
+    // Remove from the array
+    const i = this.spells.indexOf(spell)
+    this.spells.splice(i, 1)
+  },
+
+  handleSubmit: function(ev) {
+    ev.preventDefault()
+
+    const f = ev.target
+
+    const spell = {
+      name: f.spellName.value,
+      level: f.level.value,
+    }
+    this.spells.push(spell)
+
+    const item = this.renderItem(spell)
+
+    const list = document.querySelector('#spells')
+    list.appendChild(item)
+
+    f.reset()
+    f.spellName.focus()
+  },
 }
 
-const addItem = function(arr, inp){
-    arr.push(inp)
-}
-
-const handleSubmit = function(ev) {
-  ev.preventDefault()
-
-  const f = ev.target
-
-  const spell = {
-    name: f.spellName.value,
-    level: f.level.value,
-  }
-
-  const item = renderItem(spell)
-
-  const list = document.querySelector('#spells')
-  list.appendChild(item)
-
-  f.reset()
-}
-
-const delItem = function(){
-    this.parentNode.parentNode.removeChild(this.parentNode)
-    const t = document.querySelector("#t")
-    t.textContent = ""
-
-    tot.splice(butt.indexOf(this),1)
-
-    tot.forEach(function(te){
-        t.textContent += te.name + " "
-    })
-
-    butt.splice(butt.indexOf(this),1)
-}   
-
-form.addEventListener('submit', handleSubmit)
+app.init()
