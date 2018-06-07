@@ -27,8 +27,10 @@ const app = {
     // Replace the appropriate values in each <span>
     properties.forEach(property => {
       const el = item.querySelector(`.${property}`)
-      el.textContent = spell[property]
-      el.setAttribute('title', spell[property])
+      if(el){
+        el.textContent = spell[property]
+        el.setAttribute('title', spell[property])
+      }
     })
 
     // delete button
@@ -39,18 +41,35 @@ const app = {
         this.removeSpell.bind(this, spell)
       )
 
+
+    // favorite button
+    item
+      .querySelector('button.fav')
+      .addEventListener(
+        'click',
+        this.addFav.bind(this,spell)
+      )
+
     return item
   },
 
   removeSpell: function(spell, ev) {
     // Remove from the DOM
     const button = ev.target
-    const item = button.closest('.spell')
-    item.parentNode.removeChild(item)
+     const item = button.closest('.spell')
+     item.parentNode.removeChild(item)
 
     // Remove from the array
     const i = this.spells.indexOf(spell)
     this.spells.splice(i, 1)
+  },
+
+  addFav: function(spell, ev){
+    const button = ev.target
+    const item = button.closest('.spell')
+    spell.favorite = item.classList.toggle('fav')
+
+    spell.favorite = !spell.favorite
   },
 
   handleSubmit: function(ev) {
@@ -61,6 +80,7 @@ const app = {
     const spell = {
       name: f.spellName.value,
       level: f.level.value,
+      favorite: false,
     }
     this.spells.push(spell)
 
