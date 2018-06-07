@@ -1,13 +1,28 @@
-class App{
+class App {
   constructor() {
     this.spells = []
     this.template = document.querySelector('.spell.template')
     this.list = document.querySelector('#spells')
 
+    this.load()
+
     const form = document.querySelector('form')
     form.addEventListener('submit', ev => {
       this.handleSubmit(ev)
     })
+  }
+
+  load() {
+    // Read the JSON from localStorage
+    const spellJSON = localStorage.getItem('spells')
+
+    // Convert the JSON back into an array
+    const spellArray = JSON.parse(spellJSON)
+
+    // Load the spells back into the app
+    if (spellArray) {
+      spellArray.forEach(this.addSpell.bind(this))
+    }
   }
 
   renderProperty(name, value) {
@@ -33,6 +48,11 @@ class App{
         el.setAttribute('title', spell[property])
       }
     })
+
+    // Mark it as a favorite, if applicable
+    if (spell.favorite) {
+      item.classList.add('fav')
+    }
 
     // delete button
     item
@@ -66,7 +86,6 @@ class App{
         this.moveDown.bind(this, spell)
       )
 
-
     return item
   }
 
@@ -88,6 +107,8 @@ class App{
       // Move it on the page
       this.list.insertBefore(item.nextSibling, item)
     }
+
+    this.save()
   }
 
   moveUp(spell, ev) {
@@ -108,6 +129,8 @@ class App{
       // Move it on the page
       this.list.insertBefore(item, item.previousSibling)
     }
+
+    this.save()
   }
 
   removeSpell(spell, ev) {
@@ -119,12 +142,22 @@ class App{
     // Remove from the array
     const i = this.spells.indexOf(spell)
     this.spells.splice(i, 1)
+
+    this.save()
   }
 
   toggleFavorite(spell, ev) {
     const button = ev.target
     const item = button.closest('.spell')
     spell.favorite = item.classList.toggle('fav')
+    this.save()
+  }
+
+  addSpell(spell) {
+    this.spells.push(spell)
+
+    const item = this.renderItem(spell)
+    this.list.appendChild(item)
   }
 
   handleSubmit(ev) {
@@ -137,14 +170,20 @@ class App{
       level: f.level.value,
       favorite: false,
     }
-    this.spells.push(spell)
 
-    const item = this.renderItem(spell)
-    this.list.appendChild(item)
+    this.addSpell(spell)
 
+    this.save()
     f.reset()
     f.spellName.focus()
   }
+
+  save() {
+    localStorage.setItem(
+      'spells',
+      JSON.stringify(this.spells)
+    )
+  }
 }
 
-new App()
+const app = new App()
